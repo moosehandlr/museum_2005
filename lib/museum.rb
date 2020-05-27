@@ -4,7 +4,7 @@ class Museum
     @name = name
     @exhibits = []
     @patrons = []
-    @patrons_int = {}
+    @patrons_int = Hash.new{|hash,key| hash[key] = []}
   end
 
   def add_exhibit(new_exhibit)
@@ -21,8 +21,8 @@ class Museum
   end
 
   def patrons_by_exhibit_interest
-    require "pry"; binding.pry
+    @patrons.each do |patron|
+      @patrons_int[patron.interests] << patron
+    end
   end
-
-
 end
